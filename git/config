@@ -1,0 +1,7 @@
+[user]
+	email = 48527182+hyphmngo@users.noreply.github.com
+	name = Jongheon Park
+[core]
+	editor = nvim
+[alias]
+        tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
