@@ -62,6 +62,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plug-in setup
 require('lazy').setup({
+  { 'tpope/vim-commentary' },
+  { 'tpope/vim-surround' },
   { 
     'catppuccin/nvim',
     name = 'catppuccin',
