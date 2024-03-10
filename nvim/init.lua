@@ -39,6 +39,9 @@ vim.opt.completeopt = { 'menuone', 'preview', 'noinsert', 'noselect' }
 
 vim.opt.inccommand = 'split'
 
+-- Used for CursorHold autocmd
+vim.opt.updatetime = 250
+
 -- vim.opt.pumblend = 10
 -- vim.opt.winblend = 10
 
@@ -195,15 +198,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     -- Open float when hover
-    vim.api.nvim_create_autocmd("CursorHold", {
+    vim.api.nvim_create_autocmd('CursorHold', {
       buffer = bufnr,
       callback = function()
         local opts = {
           focusable = false,
           close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-          -- border = 'single', -- 'rounded'
           source = 'always',
-          prefix = '',
+          prefix = ' ',
           scope = 'cursor'
         }
         vim.diagnostic.open_float(nil, opts)
