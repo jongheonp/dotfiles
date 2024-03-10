@@ -1,50 +1,51 @@
--- NOTE: Keep it simple, stupid!
--- TODO: Change the window bar color
--- TODO: Migrate to nightly, use vim.snippet
--- TODO: nvim-cmp: Make variables have the highest priority
--- TODO: Move plug-in setups to individual files
+-- TODO:
+-- Automatically cd to root directory of a project when BufEnter
+-- Display number of open buffers on statusline
+-- Use vim.snippet when it's available on stable
+-- Explore formatprg, indentexpr
 
--- Set <space> as the leader key
--- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.mouse = 'a'
+vim.opt.mousescroll = { 'ver:1', 'hor:1' }
+vim.opt.termguicolors = true
 
--- Line number and signcolumn
-vim.wo.number = true
-vim.wo.relativenumber = true
-vim.wo.signcolumn = 'yes'
+vim.opt.laststatus = 3 -- Global statusline
+vim.opt.number = true
+vim.opt.relativenumber = true
 
--- Global statusline
-vim.o.laststatus = 3
-
-vim.o.splitright = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Softwrap options
-vim.o.breakat = ' \t;:,!?'
-vim.wo.breakindent = true
-vim.opt.breakindentopt = { 'shift:2', 'sbr' } -- Maybe on sbr... don't know if it looks good
-vim.o.linebreak = true
-vim.o.showbreak = '󱞩' -- 
+vim.opt.breakat = ' \t;,!?'
+vim.opt.breakindent = true
+vim.opt.breakindentopt = { 'shift:2', 'sbr' }
+vim.opt.linebreak = true
 
-vim.o.clipboard = 'unnamedplus'
-vim.o.mouse = 'a' -- Scroll with wheel without moving the cursor
-vim.o.termguicolors = true
+-- Default plus blink in insert mode
+vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25-blinkon1,r-cr-o:hor20'
 
-vim.o.hlsearch = false
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
--- Tabs
-vim.o.shiftwidth = 2 -- Number of whitespaces for (auto)indent
-vim.o.softtabstop = -1
-vim.o.expandtab = true -- Tabs to spaces
-
-vim.o.updatetime = 250
+-- Insert 2 <S>s instead of <Tab> while editing
+vim.opt.expandtab = true -- Insert spaces instead of tabs
+vim.opt.shiftwidth = 2 -- Number of whitespace for (auto)indent
+vim.opt.softtabstop = -1 -- Use shiftwidth's value
 
 -- Pop up menu even when only one match, explicit insert & select by user
 -- Not sure about preview... does it do anything for cmp?
 vim.opt.completeopt = { 'menuone', 'preview', 'noinsert', 'noselect' }
 
-vim.o.pumblend = 10
--- vim.o.winblend = 10
+vim.opt.inccommand = 'split'
+
+-- vim.opt.pumblend = 10
+-- vim.opt.winblend = 10
+
+-- Set <Space> as leader
+-- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -62,18 +63,19 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plug-in setup
 require('lazy').setup({
-  { 'tpope/vim-commentary' },
-  { 'tpope/vim-surround' },
   { 
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,
     lazy = false,
     opts = {
-      flavour = 'mocha',
-      transparent_background = false,
-      show_end_of_buffer = false,
       no_italic = true,
+      custom_highlights = function(colors)
+        return {
+          -- StatusLine = { bg = colors.base },
+          -- WinSeparator = { fg = colors.overlay0 }
+        }
+      end
     },
     config = function(_, opts)
       require('catppuccin').setup(opts)
@@ -83,7 +85,6 @@ require('lazy').setup({
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-nvim-lsp'
     },
     config = function()
@@ -101,12 +102,14 @@ require('lazy').setup({
           ['<C-u>'] = cmp.mapping.scroll_docs({ delta = 4 }),
           ['<C-d>'] = cmp.mapping.scroll_docs({ delta = -4 }),
           ['<C-Space>'] = cmp.mapping.complete(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true })
+          -- TODO: Just regular <CR> makes it cumbersome when formatting text,
+          -- need to find an alternative...
+          ['<Tab>'] = cmp.mapping.confirm({ select = true }) 
+          -- ['<S-CR>'] = cmp.mapping.confirm({ select = true }) 
+          -- ['<C-CR>'] = cmp.mapping.confirm({ select = true }) 
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp', keyword_length = 2 }
-        }, {
-          { name = 'buffer', keyword_length = 4 }
         }),
         performance = {
           max_view_entries = 16
@@ -129,12 +132,8 @@ require('lazy').setup({
     }
   },
   {
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      signs = {
-        -- delete = { text = '_' }
-      },
-    },
+    'lewis6991/gitsigns.nvim',
+    config = true
   },
   { 'neovim/nvim-lspconfig' },
   {
@@ -145,9 +144,11 @@ require('lazy').setup({
     build = ':TSUpdate',
     opts = {
       ensure_installed = {
+        'bash',
         'c',
         'comment',
         'cpp',
+        'diff',
         'git_config',
         'git_rebase',
         'gitattributes',
@@ -159,6 +160,7 @@ require('lazy').setup({
         'markdown_inline',
         'ocaml',
         'ocaml_interface',
+        'ocamllex',
         'python',
         'query',
         'verilog',
@@ -169,12 +171,16 @@ require('lazy').setup({
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = false
+      },
+      indent = {
+        enable = true
       }
     },
     config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
     end
-  }
+  },
+  { 'tpope/vim-commentary' },
 })
 
 -- [[ LSP Related Setup ]] --
@@ -193,8 +199,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       buffer = bufnr,
       callback = function()
         local opts = {
-          -- pad_top = 1,
-          -- pad_bottom = 1,
           focusable = false,
           close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
           -- border = 'single', -- 'rounded'
@@ -240,6 +244,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gi', "<Cmd>lua require('fzf-lua').lsp_implementations()<CR>", { silent = true, desc = 'LSP implementations', buffer = ev.buf })
     vim.keymap.set('n', 'gr', "<Cmd>lua require('fzf-lua').lsp_references()<CR>", { silent = true, desc = 'LSP references', buffer = ev.buf })
 
+    -- TODO: Need a keymap for symbols
+
     -- TODO: Need to remap because of fzf-lua mapping
     -- vim.keymap.set('n', '<space>f', function()
     --   vim.lsp.buf.format { async = true }
@@ -261,42 +267,9 @@ require'lspconfig'.ocamllsp.setup{
   capabilities = capabilities
 }
 
--- require('lspconfig').lua_ls.setup({
---   capabilities = capabilities,
---   on_attach = on_attach,
---   on_init = function(client)
---     local path = client.workspace_folders[1].name
---     if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
---       client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
---         Lua = {
---           runtime = {
---             -- Tell the language server which version of Lua you're using
---             -- (most likely LuaJIT in the case of Neovim)
---             version = 'LuaJIT'
---           },
---           -- Make the server aware of Neovim runtime files
---           workspace = {
---             checkThirdParty = false,
---             library = {
---               vim.env.VIMRUNTIME
---               -- "${3rd}/luv/library"
---               -- "${3rd}/busted/library",
---             }
---             -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
---             -- library = vim.api.nvim_get_runtime_file("", true)
---           }
---         }
---       })
--- 
---       client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
---     end
---     return true
---   end
--- })
-
 -- Map frequently used commands
 vim.keymap.set('n', '<Leader>w', '<C-W>', { silent = true })
--- vim.keymap.set('n', '<C-D>', '<C-D>zz', { silent = true }) -- TODO: Fix flicker at the beginning of file
+vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>')
 
 -- fzf-lua keymaps
 vim.keymap.set('n', "<Leader>fb", "<Cmd>lua require('fzf-lua').buffers()<CR>", { silent = true, desc = "Open buffers" })
@@ -306,9 +279,3 @@ vim.keymap.set('n', "<Leader>fw", "<Cmd>lua require('fzf-lua').grep_cword()<CR>"
 vim.keymap.set('n', "<Leader>f<S-W>", "<Cmd>lua require('fzf-lua').grep_cWORD()<CR>", { silent = true, desc = "Search WORD under cursor" })
 vim.keymap.set('n', "<Leader>fl", "<Cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true, desc = "Live grep current project" })
 vim.keymap.set('n', "<Leader>fc", "<Cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true, desc = "Live grep current buffer" })
-
--- markdown-preview keymaps
-vim.g.mkdp_auto_close = 0
-vim.keymap.set('n', "<leader>mp", "<Plug>MarkdownPreview", { silent = true, desc = "Preview Markdown" })
-vim.keymap.set('n', "<leader>ms", "<Plug>MarkdownStop", { silent = true, desc = "Stop Markdown preview" })
-vim.keymap.set('n', "<leader>mt", "<Plug>MarkdownToggle", { silent = true, desc = "Toggle Markdown preview" })
