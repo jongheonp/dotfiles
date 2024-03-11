@@ -75,8 +75,7 @@ require('lazy').setup({
       no_italic = true,
       custom_highlights = function(colors)
         return {
-          -- StatusLine = { bg = colors.base },
-          -- WinSeparator = { fg = colors.overlay0 }
+          WinSeparator = { fg = colors.overlay0 }
         }
       end
     },
