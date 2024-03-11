@@ -82,10 +82,19 @@ config.keys = {
     key = '/', mods = 'CMD',
     action = wezterm.action.RotatePanes('Clockwise')
   },
-  -- {
-  --   key = 'T',
-  --   mods = 'SUPER | SHIFT',
-  --   action = wezterm.action.ShowTabNavigator
-  -- },
+  {
+    key = ',', mods = 'CMD',
+    action = wezterm.action.MoveTabRelative(-1)
+  },
+  {
+    key = '.', mods = 'CMD',
+    action = wezterm.action.MoveTabRelative(1)
+  },
+  {
+    key = 'T',
+    mods = 'SUPER | SHIFT',
+    action = wezterm.action.ShowTabNavigator
+  },
 }
+
 return config
