@@ -271,6 +271,12 @@ require'lspconfig'.ocamllsp.setup{
 -- Map frequently used commands
 vim.keymap.set('n', '<Leader>w', '<C-W>', { silent = true })
 vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>')
+vim.keymap.set({ 'n', 'v' }, 'j', function()
+  return vim.v.count == 0 and 'gj' or 'j'
+end, { expr = true })
+vim.keymap.set({ 'n', 'v' }, 'k', function()
+  return vim.v.count == 0 and 'gk' or 'k'
+end, { expr = true })
 
 -- fzf-lua keymaps
 vim.keymap.set('n', "<Leader>fb", "<Cmd>lua require('fzf-lua').buffers()<CR>", { silent = true, desc = "Open buffers" })
