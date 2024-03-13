@@ -242,7 +242,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     vim.keymap.set('n', 'gD', "<Cmd>lua require('fzf-lua').lsp_declarations()<CR>", { silent = true, desc = 'LSP declarations', buffer = ev.buf })
     vim.keymap.set('n', 'gd', "<Cmd>lua require('fzf-lua').lsp_definitions()<CR>", { silent = true, desc = 'LSP definitions', buffer = ev.buf })
+    vim.keymap.set('n', '<Leader>fs', "<Cmd>lua require('fzf-lua').lsp_document_symbols()<CR>", { silent = true, desc = 'LSP document symbols', buffer = ev.buf })
+    vim.keymap.set('n', 'gl', "<Cmd>lua require('fzf-lua').lsp_finder()<CR>", { silent = true, desc = 'All LSP locations', buffer = ev.buf })
     vim.keymap.set('n', 'gi', "<Cmd>lua require('fzf-lua').lsp_implementations()<CR>", { silent = true, desc = 'LSP implementations', buffer = ev.buf })
+    vim.keymap.set('n', '<Leader>fS', "<Cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>", { silent = true, desc = 'LSP workspace symbols', buffer = ev.buf })
     vim.keymap.set('n', 'gr', "<Cmd>lua require('fzf-lua').lsp_references()<CR>", { silent = true, desc = 'LSP references', buffer = ev.buf })
 
     -- TODO: Need a keymap for symbols
