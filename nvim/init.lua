@@ -283,9 +283,9 @@ end, { expr = true })
 
 -- fzf-lua keymaps
 vim.keymap.set('n', "<Leader>fb", "<Cmd>lua require('fzf-lua').buffers()<CR>", { silent = true, desc = "Open buffers" })
-vim.keymap.set('n', "<Leader>ff", "<Cmd>lua require('fzf-lua').files()<CR>", { silent = true, desc = "find or fd on a path" })
+vim.keymap.set('n', "<Leader>ff", "<Cmd>lua require('fzf-lua').files()<CR>", { silent = true, desc = "Find files on the current directory" })
 vim.keymap.set('n', "<Leader>fr", "<Cmd>lua require('fzf-lua').resume()<CR>", { silent = true, desc = "Resume last command/query" })
 vim.keymap.set('n', "<Leader>fw", "<Cmd>lua require('fzf-lua').grep_cword()<CR>", { silent = true, desc = "Search word under cursor" })
 vim.keymap.set('n', "<Leader>f<S-W>", "<Cmd>lua require('fzf-lua').grep_cWORD()<CR>", { silent = true, desc = "Search WORD under cursor" })
-vim.keymap.set('n', "<Leader>fl", "<Cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true, desc = "Live grep current project" })
-vim.keymap.set('n', "<Leader>fc", "<Cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true, desc = "Live grep current buffer" })
+vim.keymap.set('n', "<Leader>fp", "<Cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true, desc = "Live grep current project" })
+vim.keymap.set('n', "<Leader>f/", "<Cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true, desc = "Live grep current buffer" })
