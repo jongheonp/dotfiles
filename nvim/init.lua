@@ -42,9 +42,6 @@ vim.opt.inccommand = 'split'
 -- Used for CursorHold autocmd
 vim.opt.updatetime = 250
 
--- vim.opt.pumblend = 10
--- vim.opt.winblend = 10
-
 -- Set <Space> as leader
 -- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -75,7 +72,7 @@ require('lazy').setup({
       no_italic = true,
       custom_highlights = function(colors)
         return {
-          WinSeparator = { fg = colors.overlay0 }
+          WinSeparator = { fg = colors.surface0 }
         }
       end
     },
