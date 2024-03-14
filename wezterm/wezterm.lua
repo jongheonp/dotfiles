@@ -4,6 +4,9 @@ local config = wezterm.config_builder()
 
 config.font = wezterm.font({ family = 'JetBrains Mono', weight = 'Medium' })
 
+local catppuccin_mocha = wezterm.get_builtin_color_schemes()['Catppuccin Mocha']
+catppuccin_mocha.split = '#313244'
+config.color_schemes = {['Catppuccin Mocha'] = catppuccin_mocha}
 config.color_scheme = 'Catppuccin Mocha'
 
 -- NOTE: Has to be a better way...
