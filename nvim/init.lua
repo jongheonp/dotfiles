@@ -9,7 +9,7 @@ vim.opt.mouse = 'a'
 vim.opt.mousescroll = { 'ver:1', 'hor:1' }
 vim.opt.termguicolors = true
 
-vim.opt.laststatus = 3 -- Global statusline
+-- vim.opt.laststatus = 3 -- Global statusline
 vim.opt.number = true
 vim.opt.relativenumber = true
 
