@@ -125,6 +125,9 @@ require('lazy').setup({
       winopts = {
         border = 'single'
       },
+      lsp = {
+        symbols = { symbol_style = 3 } -- kind only
+      },
       defaults = {
 	file_icons = false
       }
