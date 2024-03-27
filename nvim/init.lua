@@ -107,11 +107,8 @@ require('lazy').setup({
           ['<C-u>'] = cmp.mapping.scroll_docs({ delta = 4 }),
           ['<C-d>'] = cmp.mapping.scroll_docs({ delta = -4 }),
           ['<C-Space>'] = cmp.mapping.complete(),
-          -- TODO: Just regular <CR> makes it cumbersome when formatting text,
-          -- need to find an alternative...
-          ['<Tab>'] = cmp.mapping.confirm({ select = true }) 
-          -- ['<S-CR>'] = cmp.mapping.confirm({ select = true }) 
-          -- ['<C-CR>'] = cmp.mapping.confirm({ select = true }) 
+          -- ['<Tab>'] = cmp.mapping.confirm({ select = true }) 
+          ['<C-CR>'] = cmp.mapping.confirm({ select = true }) 
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp', keyword_length = 2 }
