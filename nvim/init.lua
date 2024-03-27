@@ -78,7 +78,16 @@ require('lazy').setup({
       no_italic = true,
       custom_highlights = function(colors)
         return {
-          WinSeparator = { fg = colors.surface0 }
+          FzfLuaHeaderBind = { fg = colors.rosewater },
+          FzfLuaHeaderText = { fg = colors.red },
+          FzfLuaBufName = { fg = colors.text },
+          FzfLuaBufNr = { fg = colors.rosewater },
+          FzfLuaBufLineNr = { fg = colors.green },
+          FzfLuaBufFlagCur = { fg = colors.red },
+          FzfLuaBufFlagAlt = { fg = colors.rosewater },
+          FzfLuaTabTitle = { fg = colors.text },
+          FzfLuaTabMarker = { fg = colors.red },
+          FzfLuaLiveSym = { fg = colors.mauve }
         }
       end
     },
