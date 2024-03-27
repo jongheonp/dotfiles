@@ -255,10 +255,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { silent = true, desc = 'LSP declarations', buffer = ev.buf })
     -- vim.keymap.set('n', 'gd', "<Cmd>lua require('fzf-lua').lsp_definitions()<CR>", { silent = true, desc = 'LSP definitions', buffer = ev.buf })
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true, desc = 'LSP definitions', buffer = ev.buf })
-    vim.keymap.set('n', '<Leader>fs', "<Cmd>lua require('fzf-lua').lsp_document_symbols()<CR>", { silent = true, desc = 'LSP document symbols', buffer = ev.buf })
+    vim.keymap.set('n', '<Leader>ds', "<Cmd>lua require('fzf-lua').lsp_document_symbols()<CR>", { silent = true, desc = 'LSP document symbols', buffer = ev.buf })
     vim.keymap.set('n', 'gl', "<Cmd>lua require('fzf-lua').lsp_finder()<CR>", { silent = true, desc = 'All LSP locations', buffer = ev.buf })
     vim.keymap.set('n', 'gI', "<Cmd>lua require('fzf-lua').lsp_implementations()<CR>", { silent = true, desc = 'LSP implementations', buffer = ev.buf })
-    vim.keymap.set('n', '<Leader>fS', "<Cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>", { silent = true, desc = 'LSP workspace symbols', buffer = ev.buf })
+    vim.keymap.set('n', '<Leader>ws', "<Cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>", { silent = true, desc = 'LSP workspace symbols', buffer = ev.buf })
     vim.keymap.set('n', 'gr', "<Cmd>lua require('fzf-lua').lsp_references()<CR>", { silent = true, desc = 'LSP references', buffer = ev.buf })
 
     -- TODO: Need to remap because of fzf-lua mapping
@@ -283,20 +283,14 @@ require'lspconfig'.ocamllsp.setup{
 }
 
 -- Map frequently used commands
-vim.keymap.set('n', '<Leader>w', '<C-W>', { silent = true })
 vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>')
-vim.keymap.set({ 'n', 'v' }, 'j', function()
-  return vim.v.count == 0 and 'gj' or 'j'
-end, { expr = true })
-vim.keymap.set({ 'n', 'v' }, 'k', function()
-  return vim.v.count == 0 and 'gk' or 'k'
-end, { expr = true })
+vim.keymap.set('n', '<Leader>ss', '<Cmd>mks!<CR>')
 
 -- fzf-lua keymaps
 vim.keymap.set('n', "<Leader>fb", "<Cmd>lua require('fzf-lua').buffers()<CR>", { silent = true, desc = "Open buffers" })
 vim.keymap.set('n', "<Leader>ff", "<Cmd>lua require('fzf-lua').files()<CR>", { silent = true, desc = "Find files on the current directory" })
 vim.keymap.set('n', "<Leader>fr", "<Cmd>lua require('fzf-lua').resume()<CR>", { silent = true, desc = "Resume last command/query" })
 vim.keymap.set('n', "<Leader>fw", "<Cmd>lua require('fzf-lua').grep_cword()<CR>", { silent = true, desc = "Search word under cursor" })
-vim.keymap.set('n', "<Leader>f<S-W>", "<Cmd>lua require('fzf-lua').grep_cWORD()<CR>", { silent = true, desc = "Search WORD under cursor" })
-vim.keymap.set('n', "<Leader>fp", "<Cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true, desc = "Live grep current project" })
+vim.keymap.set('n', "<Leader>fW", "<Cmd>lua require('fzf-lua').grep_cWORD()<CR>", { silent = true, desc = "Search WORD under cursor" })
+vim.keymap.set('n', "<Leader>fl", "<Cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true, desc = "Live grep current project" })
 vim.keymap.set('n', "<Leader>f/", "<Cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true, desc = "Live grep current buffer" })
