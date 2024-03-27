@@ -61,6 +61,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+lazy_opts = {
+  ui = {
+    backdrop = 100
+  }
+}
+
 -- Plug-in setup
 require('lazy').setup({
   { 
@@ -183,7 +189,7 @@ require('lazy').setup({
     end
   },
   { 'tpope/vim-commentary' },
-})
+}, lazy_opts)
 
 -- [[ LSP Related Setup ]] --
 vim.diagnostic.config({
