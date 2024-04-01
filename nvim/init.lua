@@ -197,7 +197,6 @@ require('lazy').setup({
   { 'tpope/vim-commentary' },
 }, lazy_opts)
 
--- [[ LSP Related Setup ]] --
 vim.diagnostic.config({
   virtual_text = false,
   signs = true,
@@ -240,15 +239,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { silent = true, desc = "LSP signature help", buffer = ev.buf })
     vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, { silent = true, desc = "LSP rename", buffer = ev.buf })
 
-    -- TODO: Need to remap cause of window mode but I rarely use LSP workspace
-    -- APIs nor do I understand them
-    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-    -- vim.keymap.set('n', '<space>wl', function()
-    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    -- end, opts)
-
-    -- TODO: Need to rethink these mappings...
     vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, opts)
     vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, opts)
 
@@ -287,7 +277,7 @@ vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<Leader>ss', '<Cmd>mks!<CR>')
 
 -- fzf-lua keymaps
-vim.keymap.set('n', "<Leader>fb", "<Cmd>lua require('fzf-lua').buffers()<CR>", { silent = true, desc = "Open buffers" })
+vim.keymap.set('n', "<Leader>f\\", "<Cmd>lua require('fzf-lua').buffers()<CR>", { silent = true, desc = "Open buffers" })
 vim.keymap.set('n', "<Leader>ff", "<Cmd>lua require('fzf-lua').files()<CR>", { silent = true, desc = "Find files on the current directory" })
 vim.keymap.set('n', "<Leader>fr", "<Cmd>lua require('fzf-lua').resume()<CR>", { silent = true, desc = "Resume last command/query" })
 vim.keymap.set('n', "<Leader>fw", "<Cmd>lua require('fzf-lua').grep_cword()<CR>", { silent = true, desc = "Search word under cursor" })
