@@ -4,23 +4,23 @@ local config = wezterm.config_builder()
 
 config.font = wezterm.font({ family = 'JetBrains Mono', weight = 'Medium' })
 
+-- NOTE: Has to be a better way...
+local subtext0 = '#a6adc8'
+local overlay0 = '#6c7086'
+local surface0 = '#313244'
+local base = '#1e1e2e'
+local crust = '#11111b'
+
 local catppuccin_mocha = wezterm.get_builtin_color_schemes()['Catppuccin Mocha']
-catppuccin_mocha.split = '#313244'
+catppuccin_mocha.split = surface0
 config.color_schemes = {['Catppuccin Mocha'] = catppuccin_mocha}
 config.color_scheme = 'Catppuccin Mocha'
-
--- NOTE: Has to be a better way...
-local text = '#cdd6f4'
-local overlay0 = '#6c7086'
-local base = '#1e1e2e'
-local mantle = '#181825'
-local crust = '#11111b'
 
 config.colors = {
   tab_bar = {
     active_tab = {
       bg_color = base,
-      fg_color = text
+      fg_color = subtext0
     },
     inactive_tab = {
       bg_color = crust,
