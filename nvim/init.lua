@@ -135,7 +135,7 @@ require('lazy').setup({
     'ibhagwan/fzf-lua',
     opts = {
       winopts = {
-        border = 'single'
+        border = 'rounded'
       },
       lsp = {
         symbols = { symbol_style = 3 } -- kind only
