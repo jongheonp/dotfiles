@@ -138,10 +138,17 @@ require('lazy').setup({
         border = 'rounded'
       },
       lsp = {
-        symbols = { symbol_style = 3 } -- kind only
+        symbols = {
+          symbol_style = 3 -- kind only
+        }
       },
       defaults = {
-	file_icons = false
+        cwd_prompt = false,
+        prompt = '> ',
+        file_icons = false,
+        fzf_opts = {
+          ['--info'] = 'default'
+        },
       }
     }
   },
