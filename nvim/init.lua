@@ -147,7 +147,7 @@ require('lazy').setup({
         prompt = '> ',
         file_icons = false,
         fzf_opts = {
-          ['--info'] = 'default'
+          ['--info'] = 'inline-right',
         },
       }
     }
