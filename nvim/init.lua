@@ -138,9 +138,22 @@ require('lazy').setup({
         border = 'rounded'
       },
       lsp = {
+        prompt = '> ',
+        fzf_opts = {
+          ['--info'] = 'inline-right',
+        },
         symbols = {
-          symbol_style = 3 -- kind only
-        }
+          prompt = '> ',
+          symbol_style = 2, -- symbols only
+          symbol_icons = {
+            Variable = ' ',
+            Constant = ' '
+          },
+          symbol_fmt = function(s, opts) return s end,
+          fzf_opts = {
+            ['--info'] = 'inline-right',
+          }
+        },
       },
       defaults = {
         cwd_prompt = false,
