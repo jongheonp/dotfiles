@@ -1,7 +1,6 @@
 -- TODO:
 -- Automatically cd to root directory of a project when BufEnter
--- Display number of open buffers on statusline
--- Use vim.snippet when it's available on stable
+-- Use vim.snippet on 0.10
 -- Explore formatprg, indentexpr
 
 vim.opt.clipboard = 'unnamedplus'
@@ -208,13 +207,35 @@ require('lazy').setup({
       },
       indent = {
         enable = true
+      },
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ['af'] = '@function.outer',
+            ['if'] = '@function.inner',
+            ['ac'] = '@class.outer',
+            ['ic'] = '@class.inner',
+          }
+        },
+        move = {
+          enable = true,
+          set_jumps = true,
+          goto_next_start = {
+            [']m'] = '@function.outer',
+          },
+          goto_previous_start = {
+            ['[m'] = '@function.outer',
+          }
+        }
       }
     },
     config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
     end
   },
-  { 'tpope/vim-commentary' },
+  { 'tpope/vim-commentary' }, -- TODO: Remove on 0.10
 }, lazy_opts)
 
 vim.diagnostic.config({
@@ -263,7 +284,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, opts)
 
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { silent = true, desc = 'LSP declarations', buffer = ev.buf })
-    -- vim.keymap.set('n', 'gd', "<Cmd>lua require('fzf-lua').lsp_definitions()<CR>", { silent = true, desc = 'LSP definitions', buffer = ev.buf })
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true, desc = 'LSP definitions', buffer = ev.buf })
     vim.keymap.set('n', '<Leader>ds', "<Cmd>lua require('fzf-lua').lsp_document_symbols()<CR>", { silent = true, desc = 'LSP document symbols', buffer = ev.buf })
     vim.keymap.set('n', 'gl', "<Cmd>lua require('fzf-lua').lsp_finder()<CR>", { silent = true, desc = 'All LSP locations', buffer = ev.buf })
