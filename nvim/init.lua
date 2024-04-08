@@ -297,8 +297,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end, opts)
   end,
 })
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local native_caps = vim.lsp.protocol.make_client_capabilities()
+local cmp_caps = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = vim.tbl_deep_extend('force', native_caps, cmp_caps)
 
 require('lspconfig').pyright.setup {
   capabilities = capabilities
