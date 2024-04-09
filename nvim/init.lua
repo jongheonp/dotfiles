@@ -266,11 +266,22 @@ vim.diagnostic.config({
   signs = true,
   update_in_insert = true,
   severity_sort = false,
+  float = {
+    border = 'solid'
+  }
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
+    -- Change border
+    local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+    function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+      opts = opts or {}
+      opts.border = opts.border or 'solid'
+      return orig_util_open_floating_preview(contents, syntax, opts, ...)
+    end
+
     -- Open float when hover
     vim.api.nvim_create_autocmd('CursorHold', {
       buffer = bufnr,
