@@ -77,6 +77,8 @@ require('lazy').setup({
       no_italic = true,
       custom_highlights = function(colors)
         return {
+          FloatBorder = { bg = colors.mantle },
+
           FzfLuaHeaderBind = { fg = colors.surface2 },
           FzfLuaHeaderText = { fg = colors.surface2 },
           FzfLuaBufName = { fg = colors.pink },
@@ -98,16 +100,29 @@ require('lazy').setup({
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp'
+      'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
       local cmp = require('cmp')
-      local win_config = cmp.config.window.bordered()
-      win_config.border = 'none'
-      win_config.winhighlight = 'Normal:NormalFloat'
+      local icons = require('icons').cmp_kinds
+      local winhighlight = 'Normal:NormalFloat,FloatBorder:NormalFloat,CursorLine:Visual,Search:None'
       cmp.setup({
         window = {
-          completion = win_config
+          completion = {
+            border = 'solid',
+            winhighlight = winhighlight,
+          },
+          documentation = {
+            border = 'solid',
+            winhighlight = winhighlight
+          }
+        },
+        formatting = {
+          fields = { 'kind', 'abbr', 'menu' },
+          format = function(_, vim_item)
+            vim_item.kind = icons[vim_item.kind] or icons.Text
+            return vim_item
+          end
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
@@ -119,7 +134,7 @@ require('lazy').setup({
           ['<C-CR>'] = cmp.mapping.confirm({ select = true }) 
         }),
         sources = cmp.config.sources({
-          { name = 'nvim_lsp', keyword_length = 2 }
+          { name = 'nvim_lsp', keyword_length = 3 }
         }),
         performance = {
           max_view_entries = 16
