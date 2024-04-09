@@ -148,9 +148,6 @@ require('lazy').setup({
   {
     'ibhagwan/fzf-lua',
     opts = {
-      winopts = {
-        border = 'rounded'
-      },
       lsp = {
         prompt = '> ',
         fzf_opts = {
@@ -158,20 +155,20 @@ require('lazy').setup({
         },
         symbols = {
           prompt = '> ',
-          symbol_style = 2, -- symbols only
-          symbol_icons = {
-            Variable = ' ',
-            Constant = ' '
-          },
+          symbol_style = 2, -- Icons only
+          symbol_icons = require('icons').symbol_kinds,
           symbol_fmt = function(s, opts) return s end,
           fzf_opts = {
             ['--info'] = 'inline-right',
           }
         },
+        finder = {
+          separator = ' | ',
+        }
       },
       defaults = {
-        cwd_prompt = false,
         prompt = '> ',
+        cwd_prompt = false,
         file_icons = false,
         fzf_opts = {
           ['--info'] = 'inline-right',
