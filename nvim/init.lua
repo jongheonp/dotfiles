@@ -212,10 +212,19 @@ require('lazy').setup({
         'vim',
         'vimdoc',
       },
-      auto_install = false,
+      auto_install = false, -- Don't auto install every language
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = false
+      },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<Leader>is',
+          node_incremental = '<Leader>ii',
+          scope_incremental = '<Leader>ic',
+          node_decremental = '<Leader>id',
+        },
       },
       indent = {
         enable = true
@@ -236,9 +245,11 @@ require('lazy').setup({
           set_jumps = true,
           goto_next_start = {
             [']m'] = '@function.outer',
+            [']]'] = '@class.outer'
           },
           goto_previous_start = {
             ['[m'] = '@function.outer',
+            ['[['] = '@class.outer'
           }
         }
       }
