@@ -1,2 +1,6 @@
 --smart-case
 --pretty
+--colors=line:none
+--colors=column:none
+--colors=match:none
+--colors=match:fg:green
