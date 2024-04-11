@@ -101,6 +101,18 @@ config.keys = {
     mods = 'SUPER | SHIFT',
     action = wezterm.action.ShowTabNavigator
   },
+  {
+    key = '0', mods = 'CTRL',
+    action = wezterm.action.DisableDefaultAssignment
+  },
+  {
+    key = '-', mods = 'CTRL',
+    action = wezterm.action.DisableDefaultAssignment
+  },
+  {
+    key = '=', mods = 'CTRL',
+    action = wezterm.action.DisableDefaultAssignment
+  },
 }
 
 return config
