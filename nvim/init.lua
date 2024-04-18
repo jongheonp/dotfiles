@@ -312,20 +312,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Buffer local mappings
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { silent = true, desc = "LSP hover", buffer = ev.buf })
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { silent = true, desc = "LSP signature help", buffer = ev.buf })
+
+    vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, { silent = true, desc = "LSP code action", buffer = ev.buf })
     vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, { silent = true, desc = "LSP rename", buffer = ev.buf })
 
-    vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<Leader>dd', "<Cmd>lua require('fzf-lua').lsp_document_diagnostics()<CR>", { silent = true, desc = 'LSP document diagnostics', buffer = ev.buf })
+    vim.keymap.set('n', '<Leader>ds', "<Cmd>lua require('fzf-lua').lsp_document_symbols()<CR>", { silent = true, desc = 'LSP document symbols', buffer = ev.buf })
+    vim.keymap.set('n', '<Leader>wd', "<Cmd>lua require('fzf-lua').lsp_workspace_diagnostics()<CR>", { silent = true, desc = 'LSP workspace diagnostics', buffer = ev.buf })
+    vim.keymap.set('n', '<Leader>ws', "<Cmd>lua require('fzf-lua').lsp_workspace_symbols()<CR>", { silent = true, desc = 'LSP workspace symbols', buffer = ev.buf })
 
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { silent = true, desc = 'LSP declarations', buffer = ev.buf })
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true, desc = 'LSP definitions', buffer = ev.buf })
-    vim.keymap.set('n', '<Leader>dd', "<Cmd>lua require('fzf-lua').lsp_document_diagnostics()<CR>", { silent = true, desc = 'LSP document diagnostics', buffer = ev.buf })
-    vim.keymap.set('n', '<Leader>ds', "<Cmd>lua require('fzf-lua').lsp_document_symbols()<CR>", { silent = true, desc = 'LSP document symbols', buffer = ev.buf })
-    vim.keymap.set('n', 'gl', "<Cmd>lua require('fzf-lua').lsp_finder()<CR>", { silent = true, desc = 'All LSP locations', buffer = ev.buf })
+    -- vim.keymap.set('n', 'gl', "<Cmd>lua require('fzf-lua').lsp_finder()<CR>", { silent = true, desc = 'All LSP locations', buffer = ev.buf })
     vim.keymap.set('n', 'gI', "<Cmd>lua require('fzf-lua').lsp_implementations()<CR>", { silent = true, desc = 'LSP implementations', buffer = ev.buf })
-    vim.keymap.set('n', '<Leader>wd', "<Cmd>lua require('fzf-lua').lsp_workspace_diagnostics()<CR>", { silent = true, desc = 'LSP workspace diagnostics', buffer = ev.buf })
-    vim.keymap.set('n', '<Leader>ws', "<Cmd>lua require('fzf-lua').lsp_workspace_symbols()<CR>", { silent = true, desc = 'LSP workspace symbols', buffer = ev.buf })
     vim.keymap.set('n', 'gr', "<Cmd>lua require('fzf-lua').lsp_references()<CR>", { silent = true, desc = 'LSP references', buffer = ev.buf })
+    vim.keymap.set('n', 'gy', "<Cmd>lua require('fzf-lua').lsp_typedefs()<CR>", { silent = true, desc = "LSP type definitions", buffer = ev.buf })
 
     -- TODO: Need to remap because of fzf-lua mapping
     -- vim.keymap.set('n', '<space>f', function()
