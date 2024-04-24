@@ -2,7 +2,10 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
-config.font = wezterm.font({ family = 'JetBrains Mono', weight = 'Medium' })
+config.font = wezterm.font_with_fallback({
+  { family = 'JetBrains Mono', weight = 'Medium' },
+  'Apple Color Emoji'
+})
 
 -- NOTE: Has to be a better way...
 local subtext0 = '#a6adc8'
