@@ -21,9 +21,10 @@ vim.opt.breakindent = true
 vim.opt.breakindentopt = { 'shift:2', 'sbr' }
 vim.opt.linebreak = true
 
--- Default plus blink in insert mode
+-- Default plus blink in insert mode (had to because of WezTerm...)
 vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25-blinkon1,r-cr-o:hor20'
 
+vim.opt.wildmode = { 'longest:full', 'full' }
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
