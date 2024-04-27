@@ -78,14 +78,15 @@ require('lazy').setup({
       no_italic = true,
       custom_highlights = function(colors)
         return {
+          StatusLine = { bg = colors.base },
+          StatusLineNC = { bg = colors.base },
           FloatBorder = { bg = colors.mantle },
-
           FzfLuaHeaderBind = { fg = colors.surface2 },
           FzfLuaHeaderText = { fg = colors.surface2 },
-          FzfLuaBufName = { fg = colors.pink },
+          FzfLuaBufName = { fg = colors.pink }, -- For FzfLua lines
           FzfLuaBufNr = { fg = colors.text },
-          FzfLuaBufLineNr = { fg = colors.green },
-          FzfLuaBufFlagCur = { fg = colors.surface2 },
+          FzfLuaBufLineNr = { fg = colors.text },
+          FzfLuaBufFlagCur = { fg = colors.red },
           FzfLuaBufFlagAlt = { fg = colors.green },
           FzfLuaTabTitle = { fg = colors.text },
           FzfLuaTabMarker = { fg = colors.red },
