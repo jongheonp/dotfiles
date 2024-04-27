@@ -219,15 +219,6 @@ require('lazy').setup({
         enable = true,
         additional_vim_regex_highlighting = false
       },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '<Leader>is',
-          node_incremental = '<Leader>ii',
-          scope_incremental = '<Leader>ic',
-          node_decremental = '<Leader>id',
-        },
-      },
       indent = {
         enable = true
       },
