@@ -1,13 +1,10 @@
 -- TODO:
--- Automatically cd to root directory of a project when BufEnter
 -- Explore formatprg, indentexpr
 
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.mouse = 'a'
 vim.opt.mousescroll = { 'ver:1', 'hor:1' }
-vim.opt.termguicolors = true
 
--- vim.opt.laststatus = 3 -- Global statusline
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -23,7 +20,6 @@ vim.opt.linebreak = true
 -- Default plus blink in insert mode (had to because of WezTerm...)
 vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25-blinkon1,r-cr-o:hor20'
 
-vim.opt.wildmode = { 'longest:full', 'full' }
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
@@ -95,7 +91,7 @@ require('lazy').setup({
     },
     config = function(_, opts)
       require('catppuccin').setup(opts)
-      vim.cmd.colorscheme 'catppuccin'
+      vim.cmd.colorscheme('catppuccin')
     end
   },
   {
@@ -337,7 +333,7 @@ require('lspconfig').clangd.setup({
   capabilities = capabilities
 })
 
-require'lspconfig'.ocamllsp.setup{
+require('lspconfig').ocamllsp.setup{
   capabilities = capabilities
 }
 
