@@ -201,7 +201,6 @@ require('lazy').setup({
         'markdown_inline',
         'ocaml',
         'ocaml_interface',
-        'ocamllex',
         'python',
         'query',
         'verilog',
@@ -214,7 +213,8 @@ require('lazy').setup({
         additional_vim_regex_highlighting = false
       },
       indent = {
-        enable = true
+        enable = true,
+        disable = { 'ocaml', 'ocaml_interface' }
       },
       textobjects = {
         select = {
