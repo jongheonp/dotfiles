@@ -166,21 +166,13 @@ require('lazy').setup({
           symbol_style = 2, -- Icons only
           symbol_icons = require('icons').symbol_kinds,
           symbol_fmt = function(s, opts) return s end,
-          fzf_opts = {
-            ['--info'] = 'inline-right',
-          }
-        },
-        finder = {
-          separator = ' | ',
         }
       },
+      files = { formatter = 'path.filename_first' },
       defaults = {
-        prompt = '> ',
         cwd_prompt = false,
         file_icons = false,
-        fzf_opts = {
-          ['--info'] = 'inline-right',
-        },
+        prompt = '> ',
       }
     }
   },
@@ -356,8 +348,6 @@ vim.keymap.set('n', '<Leader>ss', '<Cmd>mks!<CR>')
 
 -- fzf-lua keymaps
 vim.keymap.set('n', "<Leader>ff", "<Cmd>lua require('fzf-lua').files()<CR>", { desc = "Find files on the current directory" })
-vim.keymap.set('n', "<Leader>f/", "<Cmd>lua require('fzf-lua').blines()<CR>", { desc = "Search current buffer lines" })
-vim.keymap.set('n', "<Leader>fg", "<Cmd>lua require('fzf-lua').live_grep()<CR>", { desc = "Search current project lines" })
 vim.keymap.set('x', "<Leader>fg", "<Cmd>lua require('fzf-lua').grep_visual()<CR>", { desc = "Search visual selection" })
-vim.keymap.set('n', "<Leader>fh", "<Cmd>lua require('fzf-lua').helptags()<CR>", { desc = "Search help tags" })
-vim.keymap.set('n', "<Leader>fr", "<Cmd>lua require('fzf-lua').resume()<CR>", { desc = "Resume last command/query" })
+vim.keymap.set('n', "<Leader>fg", "<Cmd>lua require('fzf-lua').live_grep()<CR>", { desc = "Search current project lines" })
+vim.keymap.set('n', "<Leader>fr", "<Cmd>lua require('fzf-lua').resume()<CR>", { desc = "Resume search" })
