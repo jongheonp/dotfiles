@@ -1,6 +1,5 @@
 -- TODO:
 -- Automatically cd to root directory of a project when BufEnter
--- Use vim.snippet on 0.10
 -- Explore formatprg, indentexpr
 
 vim.opt.clipboard = 'unnamedplus'
@@ -109,6 +108,9 @@ require('lazy').setup({
       local icons = require('icons').cmp_kinds
       local winhighlight = 'Normal:NormalFloat,FloatBorder:NormalFloat,CursorLine:Visual,Search:None'
       cmp.setup({
+        completion = {
+          keyword_length = 3
+        },
         window = {
           completion = {
             border = 'solid',
@@ -132,11 +134,15 @@ require('lazy').setup({
           ['<C-u>'] = cmp.mapping.scroll_docs({ delta = 4 }),
           ['<C-d>'] = cmp.mapping.scroll_docs({ delta = -4 }),
           ['<C-Space>'] = cmp.mapping.complete(),
-          -- ['<Tab>'] = cmp.mapping.confirm({ select = true }) 
-          ['<C-CR>'] = cmp.mapping.confirm({ select = true }) 
+          ['<Tab>'] = cmp.mapping.confirm({ select = true })
         }),
+        snippet = {
+          expand = function(args)
+            vim.snippet.expand(args.body)
+          end
+        },
         sources = cmp.config.sources({
-          { name = 'nvim_lsp', keyword_length = 3 }
+          { name = 'nvim_lsp' }
         }),
         performance = {
           max_view_entries = 16
