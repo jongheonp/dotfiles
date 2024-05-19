@@ -249,7 +249,6 @@ require('lazy').setup({
       require('nvim-treesitter.configs').setup(opts)
     end
   },
-  { 'tpope/vim-commentary' }, -- TODO: Remove on 0.10
 }, lazy_opts)
 
 vim.diagnostic.config({
