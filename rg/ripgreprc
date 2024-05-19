@@ -1,6 +1,6 @@
 --smart-case
 --pretty
+--colors=path:fg:blue
 --colors=line:none
 --colors=column:none
---colors=match:none
 --colors=match:fg:green
