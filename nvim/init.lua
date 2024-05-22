@@ -28,7 +28,3 @@ require('lazy').setup(
     change_detection = { notify = false }
   }
 )
-
--- Map frequently used commands
-vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<Leader>ss', '<Cmd>mks!<CR>')
