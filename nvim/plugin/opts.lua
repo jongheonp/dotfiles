@@ -8,16 +8,19 @@ opt.mousescroll = { 'ver:1', 'hor:1' }
 opt.number = true
 opt.relativenumber = true
 
-opt.scrolloff = 999
+opt.cursorline = true
+opt.cursorlineopt = 'number'
+
+opt.scrolloff = 999 -- Keep the cursor at middle
 
 opt.splitright = true
 opt.splitbelow = true
 
--- Softwrap options
+-- Softwrap
+opt.linebreak = true
 opt.breakat = ' \t;,!?'
 opt.breakindent = true
 opt.breakindentopt = { 'shift:2', 'sbr' }
-opt.linebreak = true
 
 -- Default plus blink in insert mode (had to because of WezTerm...)
 opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25-blinkon1,r-cr-o:hor20'
@@ -32,8 +35,7 @@ opt.softtabstop = -1 -- Use shiftwidth's value
 
 -- Pop up menu even when only one match, explicit insert & select by user
 -- Not sure about preview... does it do anything for cmp?
-opt.completeopt = { 'menuone', 'preview', 'noinsert', 'noselect' }
-
+opt.completeopt = {'menu', 'menuone', 'noselect' }
 opt.inccommand = 'split'
 
 -- Used for CursorHold autocmd
