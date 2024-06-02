@@ -21,15 +21,16 @@ return {
         prompt = '> ',
       }
     },
+    cmd = { 'Fzf', 'FzfLua' },
     keys = {
       {
         "<Leader>ff",
         "<Cmd>FzfLua files<CR>",
         desc = "Fild files on the current directory"
       },
-      { 
+      {
         "<Leader>fg",
-        "<Cmd>FzfLua grep_visual<CR>",
+        "<Cmd>FzfLua live_grep<CR>",
         desc = "Search current project lines"
       },
       {
@@ -42,6 +43,11 @@ return {
         "<Leader>fr",
         "<Cmd>FzfLua resume<CR>",
         desc = "Resume search"
+      },
+      {
+        "<Leader>fh",
+        "<Cmd>FzfLua helptags<CR>",
+        desc = "Search help tags"
       }
     }
   },
