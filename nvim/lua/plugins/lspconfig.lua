@@ -1,3 +1,13 @@
+vim.lsp.inlay_hint.enable()
+
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  update_in_insert = true,
+  severity_sort = true,
+  float = { border = 'solid', header = '', prefix = '■ ' }
+})
+
 local function client_capabilities()
   local capabilities = vim.tbl_deep_extend(
     'force',
