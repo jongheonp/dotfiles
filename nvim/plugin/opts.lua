@@ -11,7 +11,7 @@ opt.relativenumber = true
 opt.cursorline = true
 opt.cursorlineopt = 'number'
 
-opt.scrolloff = 999 -- Keep the cursor at middle
+opt.scrolloff = 5
 
 opt.splitright = true
 opt.splitbelow = true
