@@ -8,6 +8,22 @@ vim.diagnostic.config({
   float = { border = 'solid', header = '', prefix = '■ ' }
 })
 
+for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
+  vim.fn.sign_define("DiagnosticSign" .. diag, {
+    text = "",
+    texthl = "DiagnosticSign" .. diag,
+    linehl = "",
+    numhl = "DiagnosticSign" .. diag,
+  })
+end
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or 'solid'
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 local function client_capabilities()
   local capabilities = vim.tbl_deep_extend(
     'force',
@@ -20,14 +36,6 @@ end
 
 local function on_attach(ev)
   vim.lsp.inlay_hint.enable()
-
-  -- Change border
-  local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-  function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-    opts = opts or {}
-    opts.border = opts.border or 'solid'
-    return orig_util_open_floating_preview(contents, syntax, opts, ...)
-  end
 
   -- Open float when hover
   vim.api.nvim_create_autocmd('CursorHold', {
@@ -43,15 +51,6 @@ local function on_attach(ev)
       vim.diagnostic.open_float(nil, opts)
     end
   })
-
-  for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
-    vim.fn.sign_define("DiagnosticSign" .. diag, {
-      text = "",
-      texthl = "DiagnosticSign" .. diag,
-      linehl = "",
-      numhl = "DiagnosticSign" .. diag,
-    })
-  end
 
   -- Buffer local mappings
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { silent = true, desc = "LSP signature help", buffer = ev.buf })
