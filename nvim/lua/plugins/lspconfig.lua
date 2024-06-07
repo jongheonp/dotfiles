@@ -8,6 +8,7 @@ vim.diagnostic.config({
   float = { border = 'solid', header = '', prefix = '■ ' }
 })
 
+-- Highlight line number instead of icons for diagnostics
 for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
   vim.fn.sign_define("DiagnosticSign" .. diag, {
     text = "",
@@ -73,7 +74,6 @@ return {
     'neovim/nvim-lspconfig',
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
           on_attach(ev)
         end
