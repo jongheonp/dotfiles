@@ -15,8 +15,8 @@ return {
           FzfLuaHeaderText = { fg = colors.surface2 },
           FzfLuaPathColNr = { fg = colors.text },
           FzfLuaPathLineNr = { fg = colors.text },
-          FzfLuaBufName = { fg = colors.text }, -- For FzfLua lines
-          FzfLuaBufNr = { fg = colors.blue },
+          FzfLuaBufName = { fg = colors.blue }, -- For FzfLua lines
+          FzfLuaBufNr = { fg = colors.text },
           FzfLuaBufFlagCur = { fg = colors.red },
           FzfLuaBufFlagAlt = { fg = colors.green },
           FzfLuaTabTitle = { fg = colors.text },
