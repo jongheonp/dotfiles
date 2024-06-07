@@ -18,13 +18,6 @@ for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
   })
 end
 
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or 'solid'
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
-
 local function client_capabilities()
   local capabilities = vim.tbl_deep_extend(
     'force',
