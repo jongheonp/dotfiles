@@ -15,8 +15,8 @@ return {
             '%<', -- Mark general truncate point
             { hl = 'MiniStatuslineFilename', strings = { filename } },
             '%=', -- End left alignment
+            { hl = 'MiniStatuslineFileinfo', strings = { '%-14.(%l,%c%V%)' }},
             { hl = 'MiniStatuslineFileinfo', strings = { fileinfo }},
-            { hl = 'MiniStatuslineFileinfo', strings = { '%l,%c%V' }}
           })
         end
       }
