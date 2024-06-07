@@ -1,11 +1,10 @@
-vim.lsp.inlay_hint.enable()
-
 vim.diagnostic.config({
+  underline = true,
   virtual_text = false,
   signs = true,
+  float = { header = '', prefix = '■ ', border = 'solid' },
   update_in_insert = true,
-  severity_sort = true,
-  float = { border = 'solid', header = '', prefix = '■ ' }
+  severity_sort = true
 })
 
 -- Highlight line number instead of icons for diagnostics
@@ -31,15 +30,14 @@ end
 local function on_attach(ev)
   vim.lsp.inlay_hint.enable()
 
-  -- Open float when hover
+  -- Open diagnostic float when hover
   vim.api.nvim_create_autocmd('CursorHold', {
-    buffer = bufnr,
+    buffer = ev.buf,
     callback = function()
       local opts = {
         focusable = false,
         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        source = 'always',
-        prefix = ' ',
+        source = 'if_many',
         scope = 'cursor'
       }
       vim.diagnostic.open_float(nil, opts)
@@ -59,7 +57,6 @@ local function on_attach(ev)
   vim.keymap.set('n', 'gI', "<Cmd>FzfLua lsp_implementations<CR>", { desc = 'LSP implementations', buffer = ev.buf })
   vim.keymap.set('n', 'gr', "<Cmd>FzfLua lsp_references<CR>", { desc = 'LSP references', buffer = ev.buf })
   vim.keymap.set('n', 'gy', "<Cmd>FzfLua lsp_typedefs<CR>", { desc = "LSP type definitions", buffer = ev.buf })
-
 end
 
 return {
