@@ -8,6 +8,8 @@ return {
       no_italic = true,
       custom_highlights = function(colors)
         return {
+          StatusLine = { bg = colors.base },
+          StatusLineNC = { bg = colors.base },
           FloatBorder = { bg = colors.mantle },
           FzfLuaHeaderBind = { fg = colors.surface2 },
           FzfLuaHeaderText = { fg = colors.surface2 },
@@ -20,10 +22,6 @@ return {
           FzfLuaTabTitle = { fg = colors.text },
           FzfLuaTabMarker = { fg = colors.red },
           FzfLuaLiveSym = { fg = colors.green },
-          MiniStatuslineDevinfo = { bg = colors.base },
-          MiniStatuslineFilename = { bg = colors.base },
-          MiniStatuslineFileinfo = { bg = colors.base },
-          MiniStatuslineInactive = { fg = colors.surface2, bg = colors.base }
         }
       end
     },
