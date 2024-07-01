@@ -15,6 +15,9 @@ return {
         }
       },
       files = { formatter = 'path.filename_first' },
+      grep = {
+        RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH
+      },
       defaults = {
         cwd_prompt = false,
         file_icons = false,
