@@ -80,23 +80,31 @@ config.keys = {
     })
   },
   {
-    key = '[', mods = 'CMD',
-    action = wezterm.action.ActivatePaneDirection('Prev')
+    key = 'H', mods = 'CMD',
+    action = wezterm.action.ActivatePaneDirection('Left')
   },
   {
-    key = ']', mods = 'CMD',
-    action = wezterm.action.ActivatePaneDirection('Next')
+    key = 'L', mods = 'CMD',
+    action = wezterm.action.ActivatePaneDirection('Right')
+  },
+  {
+    key = 'K', mods = 'CMD',
+    action = wezterm.action.ActivatePaneDirection('Up')
+  },
+  {
+    key = 'J', mods = 'CMD',
+    action = wezterm.action.ActivatePaneDirection('Down')
   },
   {
     key = '/', mods = 'CMD',
     action = wezterm.action.RotatePanes('Clockwise')
   },
   {
-    key = ',', mods = 'CMD',
+    key = '<', mods = 'CMD',
     action = wezterm.action.MoveTabRelative(-1)
   },
   {
-    key = '.', mods = 'CMD',
+    key = '>', mods = 'CMD',
     action = wezterm.action.MoveTabRelative(1)
   },
   {
