@@ -11,8 +11,6 @@ opt.relativenumber = true
 opt.cursorline = true
 opt.cursorlineopt = 'number'
 
-opt.scrolloff = 5
-
 opt.splitright = true
 opt.splitbelow = true
 
@@ -21,9 +19,6 @@ opt.linebreak = true
 opt.breakat = ' \t;,!?'
 opt.breakindent = true
 opt.breakindentopt = { 'shift:2', 'sbr' }
-
--- Default plus blink in insert mode (had to because of WezTerm...)
-opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25-blinkon1,r-cr-o:hor20'
 
 opt.ignorecase = true
 opt.smartcase = true
@@ -42,4 +37,8 @@ opt.inccommand = 'split'
 opt.updatetime = 250
 
 -- Don't insert comment leader after 'o' or 'O' in insert mode
-opt.formatoptions:remove "o"
+vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
+  callback = function()
+    opt.formatoptions:remove('o')
+  end
+})
