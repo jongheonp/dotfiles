@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 
 config.font = wezterm.font_with_fallback({
   { family = 'JetBrains Mono', weight = 'Medium' },
-  'Apple Color Emoji'
+  { family = 'Apple Color Emoji' }
 })
 
 -- NOTE: Has to be a better way...
