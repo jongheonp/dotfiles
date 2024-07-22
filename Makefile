@@ -1,2 +1,2 @@
 install:
-	stow fd git kitty nvim rg wezterm zsh
+	stow git kitty nvim rg wezterm zsh
