@@ -2,6 +2,9 @@ return {
   {
     'ibhagwan/fzf-lua',
     opts = {
+      winopts = {
+        backdrop = 100
+      },
       lsp = {
         prompt = '> ',
         fzf_opts = {
@@ -16,7 +19,7 @@ return {
       },
       files = { formatter = 'path.filename_first' },
       grep = {
-        RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH
+        rg_opts = '--column --line-number --no-heading --color=always --colors=path:none --colors=line:none --colors=column:none --colors=match:fg:green --smart-case --max-columns=4096 --hidden -e',
       },
       defaults = {
         cwd_prompt = false,
@@ -35,6 +38,11 @@ return {
         "<Leader>fg",
         "<Cmd>FzfLua live_grep<CR>",
         desc = "Search current project lines"
+      },
+      {
+        "<Leader>fc",
+        "<Cmd>FzfLua lgrep_curbuf<CR>",
+        desc = "Search current buffer lines"
       },
       {
         "<Leader>fg",
