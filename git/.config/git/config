@@ -6,3 +6,7 @@
 [alias]
         tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
         stat = status --short
+[diff]
+	tool = nvimdiff
+[difftool]
+	prompt = no
