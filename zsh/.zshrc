@@ -66,8 +66,7 @@ alias rsync='rsync --stats -h'
 
 alias ldzshrc='source ~/.zshrc'
 
-if type nvim &> /dev/null
-then
+if type nvim &> /dev/null; then
   export EDITOR=nvim
 
   # Use Neovim to display man pages
