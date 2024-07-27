@@ -43,9 +43,7 @@ config.window_frame = {
 
 config.show_new_tab_button_in_tab_bar = false
 config.switch_to_last_active_tab_when_closing_tab = true
-config.default_cursor_style = 'BlinkingBar'
-config.cursor_blink_ease_in = 'Constant'
-config.cursor_blink_ease_out = 'Constant'
+config.default_cursor_style = 'SteadyBar'
 
 config.keys = {
   -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
@@ -80,19 +78,19 @@ config.keys = {
     })
   },
   {
-    key = 'H', mods = 'CMD',
+    key = 'h', mods = 'CMD',
     action = wezterm.action.ActivatePaneDirection('Left')
   },
   {
-    key = 'L', mods = 'CMD',
+    key = 'l', mods = 'CMD',
     action = wezterm.action.ActivatePaneDirection('Right')
   },
   {
-    key = 'K', mods = 'CMD',
+    key = 'k', mods = 'CMD',
     action = wezterm.action.ActivatePaneDirection('Up')
   },
   {
-    key = 'J', mods = 'CMD',
+    key = 'j', mods = 'CMD',
     action = wezterm.action.ActivatePaneDirection('Down')
   },
   {
