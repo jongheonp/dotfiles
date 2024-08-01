@@ -1,32 +1,36 @@
 return {
   {
     'ibhagwan/fzf-lua',
-    opts = {
-      winopts = {
-        backdrop = 100
-      },
-      lsp = {
-        prompt = '> ',
-        fzf_opts = {
-          ['--info'] = 'inline-right',
+    opts = function()
+      local actions = require('fzf-lua.actions')
+      return {
+        winopts = {
+          backdrop = 100
         },
-        symbols = {
+        lsp = {
+          symbols = {
+            symbol_style = 2, -- Icons only
+            symbol_icons = require('icons').symbol_kinds,
+            symbol_fmt = function(s, opts) return s end,
+          }
+        },
+        files = {
+          fd_opts = [[--color=never --type f --follow --exclude .git]],
+          formatter = 'path.filename_first',
+          actions = { ['ctrl-h'] = { actions.toggle_hidden } }
+        },
+        grep = {
+          rg_opts = '--column --line-number --no-heading --color=always --colors=path:none --colors=line:none --colors=column:none --colors=match:fg:green --smart-case --max-columns=4096 -e',
+          actions = { ['ctrl-h'] = { actions.toggle_hidden } }
+        },
+        defaults = {
+          cwd_prompt = false,
+          file_icons = false,
           prompt = '> ',
-          symbol_style = 2, -- Icons only
-          symbol_icons = require('icons').symbol_kinds,
-          symbol_fmt = function(s, opts) return s end,
+          no_header_i = true
         }
-      },
-      files = { formatter = 'path.filename_first' },
-      grep = {
-        rg_opts = '--column --line-number --no-heading --color=always --colors=path:none --colors=line:none --colors=column:none --colors=match:fg:green --smart-case --max-columns=4096 --hidden -e',
-      },
-      defaults = {
-        cwd_prompt = false,
-        file_icons = false,
-        prompt = '> ',
       }
-    },
+    end,
     cmd = { 'Fzf', 'FzfLua' },
     keys = {
       {
