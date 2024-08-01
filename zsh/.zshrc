@@ -73,8 +73,6 @@ if type nvim &> /dev/null; then
   export MANPAGER='nvim +Man!'
 
   # Override Vim aliases with Neovim alternatives
-  alias vi='nvim'
-  alias vim='nvim'
   alias view='nvim -R'
   alias vimdiff='nvim -d'
 fi
