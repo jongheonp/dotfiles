@@ -55,24 +55,7 @@ header:gray"
 # ripgrep
 export RIPGREP_CONFIG_PATH="$HOME/.config/rg/ripgreprc"
 
-# Aliases
-alias diff='diff --color'
-alias ls='ls -G --color'
-alias la='ls -A'
-alias ll='ls -lh'
-alias lla='ll -A'
-alias lg='livegrep'
-alias rsync='rsync --stats -h'
-
-alias ldzshrc='source ~/.zshrc'
-
 if type nvim &> /dev/null; then
   export EDITOR=nvim
-
-  # Use Neovim to display man pages
   export MANPAGER='nvim +Man!'
-
-  # Override Vim aliases with Neovim alternatives
-  alias view='nvim -R'
-  alias vimdiff='nvim -d'
 fi

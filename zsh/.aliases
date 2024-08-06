@@ -1,0 +1,13 @@
+alias diff='diff --color'
+alias ls='ls -G --color'
+alias la='ls -A'
+alias ll='ls -lh'
+alias lla='ll -A'
+alias lg='livegrep'
+alias rsync='rsync --stats -h'
+
+if type nvim &> /dev/null; then
+  # Override Vim aliases with Neovim alternatives
+  alias view='nvim -R'
+  alias vimdiff='nvim -d'
+fi
