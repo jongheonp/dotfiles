@@ -53,3 +53,5 @@ if type nvim &> /dev/null; then
   export EDITOR=nvim
   export MANPAGER='nvim +Man!'
 fi
+
+source "$HOME/.cargo/env"
