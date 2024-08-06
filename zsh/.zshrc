@@ -30,14 +30,8 @@ zstyle ':completion:*' complete-options true
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_DEFAULT_OPTS=" \
--m \
---height=50% \
---layout=reverse \
---no-scrollbar \
 --info=inline-right \
---separator ━ \
 --color=\
 fg+:-1,\
 bg+:-1,\
@@ -45,7 +39,7 @@ gutter:-1,\
 hl+:green,\
 info:-1,\
 border:-1,\
-separator:gray,\
+separator:-1,\
 prompt:16,\
 pointer:16,\
 marker:16,\
