@@ -55,14 +55,6 @@ config.keys = {
     action = wezterm.action({ SendString = '\x1bf' })
   },
   {
-    key = 'Enter', mods = 'CMD',
-    action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' })
-  },
-  {
-    key = 'Enter', mods = 'CMD | SHIFT',
-    action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' })
-  },
-  {
     key = 'W', mods = 'CMD',
     action = wezterm.action.CloseCurrentTab({ confirm = true })
   },
@@ -115,13 +107,33 @@ config.keys = {
     action = wezterm.action.DisableDefaultAssignment
   },
   {
+    key = '0', mods = 'SUPER',
+    action = wezterm.action.DisableDefaultAssignment
+  },
+  {
     key = '-', mods = 'CTRL',
+    action = wezterm.action.DisableDefaultAssignment
+  },
+  {
+    key = '-', mods = 'SUPER',
     action = wezterm.action.DisableDefaultAssignment
   },
   {
     key = '=', mods = 'CTRL',
     action = wezterm.action.DisableDefaultAssignment
   },
+  {
+    key = '=', mods = 'SUPER',
+    action = wezterm.action.DisableDefaultAssignment
+  },
+  {
+    key = '\\', mods = 'CMD',
+    action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' })
+  },
+  {
+    key = '-', mods = 'CMD',
+    action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' })
+  }
 }
 
 return config
