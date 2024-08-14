@@ -1,4 +1,4 @@
-PROMPT='%F{16}%n@%m%f %F{blue}%1~%f %# '
+PROMPT='%F{green}%n@%m%f %F{blue}%1~%f %# '
 
 unsetopt BEEP
 unsetopt PROMPTSP
@@ -54,4 +54,5 @@ if type nvim &> /dev/null; then
   export MANPAGER='nvim +Man!'
 fi
 
+source "$HOME/.aliases"
 source "$HOME/.cargo/env"
