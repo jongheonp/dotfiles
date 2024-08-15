@@ -1,2 +1,7 @@
+modules = git kitty nvim rg wezterm zsh
+
 install:
-	stow git kitty nvim rg wezterm zsh
+	stow $(modules)
+
+delete:
+	stow -D $(modules)
