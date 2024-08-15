@@ -5,7 +5,8 @@ return {
       local actions = require('fzf-lua.actions')
       return {
         winopts = {
-          backdrop = 100
+          backdrop = 100,
+          preview = { layout = 'vertical' }
         },
         lsp = {
           symbols = {
@@ -16,7 +17,8 @@ return {
         },
         files = {
           formatter = 'path.filename_first',
-          actions = { ['ctrl-h'] = { actions.toggle_hidden } }
+          actions = { ['ctrl-h'] = { actions.toggle_hidden } },
+          winopts = { preview = { layout = 'flex' } }
         },
         grep = {
           rg_opts = '--column --line-number --no-heading --color=always --colors=path:none --colors=line:none --colors=column:none --colors=match:fg:green --smart-case --max-columns=4096 -e',
