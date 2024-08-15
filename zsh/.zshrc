@@ -25,9 +25,6 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' complete-options true
 
-# opam configuration
-[[ ! -r /Users/jongheon/.opam/opam-init/init.zsh ]] || source /Users/jongheon/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS=" \
@@ -47,7 +44,10 @@ spinner:17,\
 header:gray"
 
 # ripgrep
-export RIPGREP_CONFIG_PATH="$HOME/.config/rg/ripgreprc"
+RIPGREP_CONFIG_PATH=$HOME/.config/rg/ripgreprc
+if type rg &> /dev/null && [[ -f "$RIPGREP_CONFIG_PATH" ]]; then
+  export RIPGREP_CONFIG_PATH
+fi
 
 if type nvim &> /dev/null; then
   export EDITOR=nvim
@@ -55,4 +55,3 @@ if type nvim &> /dev/null; then
 fi
 
 source "$HOME/.aliases"
-source "$HOME/.cargo/env"
