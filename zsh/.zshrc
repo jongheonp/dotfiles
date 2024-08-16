@@ -12,8 +12,6 @@ then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-export HOMEBREW_NO_ENV_HINTS=1
-
 autoload -Uz compinit select-word-style
 compinit
 select-word-style bash # NOTE: Affects Alt-Backspace
@@ -27,6 +25,7 @@ zstyle ':completion:*' complete-options true
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 export FZF_DEFAULT_OPTS=" \
 --info=inline-right \
 --color=\
@@ -43,15 +42,14 @@ marker:16,\
 spinner:17,\
 header:gray"
 
-# ripgrep
-RIPGREP_CONFIG_PATH=$HOME/.config/rg/ripgreprc
-if type rg &> /dev/null && [[ -f "$RIPGREP_CONFIG_PATH" ]]; then
-  export RIPGREP_CONFIG_PATH
-fi
-
 if type nvim &> /dev/null; then
   export EDITOR=nvim
   export MANPAGER='nvim +Man!'
+fi
+
+RIPGREP_CONFIG_PATH=$HOME/.config/rg/ripgreprc
+if type rg &> /dev/null && [[ -f "$RIPGREP_CONFIG_PATH" ]]; then
+  export RIPGREP_CONFIG_PATH
 fi
 
 source "$HOME/.aliases"
