@@ -8,9 +8,6 @@ return {
       no_italic = true,
       custom_highlights = function(colors)
         return {
-          StatusLine = { bg = colors.base },
-          StatusLineNC = { bg = colors.base },
-          WinSeparator = { fg = colors.base },
           FloatBorder = { bg = colors.mantle },
           FzfLuaHeaderBind = { fg = colors.surface2 },
           FzfLuaHeaderText = { fg = colors.surface2 },
