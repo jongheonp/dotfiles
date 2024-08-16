@@ -16,9 +16,10 @@ return {
           }
         },
         files = {
+          winopts = { preview = { layout = 'flex' } },
+          fd_opts = [[--color=never --type f --follow --exclude .git]],
           formatter = 'path.filename_first',
-          actions = { ['ctrl-h'] = { actions.toggle_hidden } },
-          winopts = { preview = { layout = 'flex' } }
+          actions = { ['ctrl-h'] = { actions.toggle_hidden } }
         },
         grep = {
           rg_opts = '--column --line-number --no-heading --color=always --colors=path:none --colors=line:none --colors=column:none --colors=match:fg:green --smart-case --max-columns=4096 -e',
