@@ -63,7 +63,7 @@ config.keys = {
     action = wezterm.action.CloseCurrentPane({ confirm = true })
   },
   {
-    key = 'k', mods = 'CMD',
+    key = 'K', mods = 'CTRL',
     action = wezterm.action.Multiple({
       wezterm.action.ClearScrollback('ScrollbackAndViewport'),
       wezterm.action.SendKey({ key = 'l', mods = 'CTRL' })
