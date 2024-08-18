@@ -7,29 +7,22 @@ return {
     build = ':TSUpdate',
     opts = {
       ensure_installed = {
-        'bash',
         'c',
         'comment',
-        'cpp',
         'diff',
         'git_config',
         'git_rebase',
         'gitattributes',
         'gitcommit',
         'gitignore',
-        'json',
         'lua',
         'markdown',
         'markdown_inline',
-        'ocaml',
-        'ocaml_interface',
-        'python',
         'query',
-        'verilog',
         'vim',
-        'vimdoc',
+        'vimdoc'
       },
-      auto_install = false, -- Don't auto install every language
+      auto_install = true,
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = false
