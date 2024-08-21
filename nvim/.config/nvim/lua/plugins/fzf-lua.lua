@@ -12,7 +12,7 @@ return {
           symbols = {
             symbol_style = 2, -- Icons only
             symbol_icons = require('icons').symbol_kinds,
-            symbol_fmt = function(s, opts) return s end,
+            symbol_fmt = function(s) return s end,
           }
         },
         files = {
