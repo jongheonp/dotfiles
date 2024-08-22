@@ -63,7 +63,7 @@ config.keys = {
     action = wezterm.action.CloseCurrentPane({ confirm = true })
   },
   {
-    key = 'K', mods = 'CTRL',
+    key = 'K', mods = 'CMD',
     action = wezterm.action.Multiple({
       wezterm.action.ClearScrollback('ScrollbackAndViewport'),
       wezterm.action.SendKey({ key = 'l', mods = 'CTRL' })
@@ -97,31 +97,12 @@ config.keys = {
     key = '>', mods = 'CMD',
     action = wezterm.action.MoveTabRelative(1)
   },
-  {
-    key = 'T',
-    mods = 'SUPER | SHIFT',
-    action = wezterm.action.ShowTabNavigator
-  },
-  {
-    key = '0', mods = 'CTRL',
-    action = wezterm.action.DisableDefaultAssignment
-  },
+  -- Unassign reset font size to make it consistent with SUPER-'-' as split vertical
   {
     key = '0', mods = 'SUPER',
     action = wezterm.action.DisableDefaultAssignment
   },
-  {
-    key = '-', mods = 'CTRL',
-    action = wezterm.action.DisableDefaultAssignment
-  },
-  {
-    key = '-', mods = 'SUPER',
-    action = wezterm.action.DisableDefaultAssignment
-  },
-  {
-    key = '=', mods = 'CTRL',
-    action = wezterm.action.DisableDefaultAssignment
-  },
+  -- Unassign decrease font size to make it consistent with SUPER-'-' as split vertical
   {
     key = '=', mods = 'SUPER',
     action = wezterm.action.DisableDefaultAssignment
