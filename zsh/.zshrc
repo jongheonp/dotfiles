@@ -12,6 +12,8 @@ then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
+export HOMEBREW_NO_ENV_HINTS=1
+
 autoload -Uz compinit select-word-style
 compinit
 select-word-style bash # NOTE: Affects Alt-Backspace
