@@ -47,7 +47,7 @@ return {
       },
       {
         "<Leader>fc",
-        "<Cmd>FzfLua lgrep_curbuf<CR>",
+        "<Cmd>lua require('fzf-lua').lgrep_curbuf({ previewer = 'false' })<CR>",
         desc = "Search current buffer lines"
       },
       {
