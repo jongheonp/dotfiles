@@ -69,8 +69,11 @@ return {
         end
       })
 
-      require('lspconfig').clangd.setup({ capabilities = client_capabilities() })
-      require('lspconfig').lua_ls.setup({
+      lspconfig = require('lspconfig')
+
+      lspconfig.clangd.setup({ capabilities = client_capabilities() })
+
+      lspconfig.lua_ls.setup({
         on_init = function(client)
           local path = client.workspace_folders[1].name
           if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
@@ -94,8 +97,10 @@ return {
           }
         }
       })
-      require('lspconfig').ocamllsp.setup({ capabilities = client_capabilities() })
-      require('lspconfig').pyright.setup({ capabilities = client_capabilities() })
+
+      lspconfig.ocamllsp.setup({ capabilities = client_capabilities() })
+
+      lspconfig.zls.setup({ capabilities= client_capabilities() })
     end
   }
 }
