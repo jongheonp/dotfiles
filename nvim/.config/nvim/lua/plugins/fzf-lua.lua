@@ -37,7 +37,7 @@ return {
     keys = {
       {
         "<Leader>ff",
-        "<Cmd>FzfLua files<CR>",
+        "<Cmd>FzfLua files resume=true<CR>",
         desc = "Fild files on the current directory"
       },
       {
