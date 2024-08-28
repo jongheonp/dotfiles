@@ -1,8 +1,8 @@
 PROMPT='%F{green}%n@%m%f %F{blue}%1~%f %# '
 
-unsetopt BEEP
-unsetopt PROMPTSP
-setopt HISTIGNOREALLDUPS SHAREHISTORY
+setopt AUTOCD HISTIGNOREALLDUPS SHAREHISTORY
+
+unsetopt BEEP PROMPTSP
 
 export LS_COLORS="" # TODO: Fix
 
