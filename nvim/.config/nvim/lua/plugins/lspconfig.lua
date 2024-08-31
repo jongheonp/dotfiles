@@ -1,3 +1,5 @@
+vim.g.zig_fmt_autosave = false -- TODO: Find a better way...
+
 vim.diagnostic.config({
   underline = true,
   virtual_text = false,
@@ -23,7 +25,6 @@ local function client_capabilities()
     vim.lsp.protocol.make_client_capabilities(),
     require('cmp_nvim_lsp').default_capabilities()
   )
-
   return capabilities
 end
 
