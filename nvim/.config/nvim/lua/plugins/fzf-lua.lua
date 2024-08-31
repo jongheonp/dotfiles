@@ -17,7 +17,6 @@ return {
         },
         files = {
           winopts = { preview = { layout = 'flex' } },
-          fd_opts = [[--color=never --type f --follow --exclude .git]],
           formatter = 'path.filename_first',
           actions = { ['ctrl-h'] = { actions.toggle_hidden } }
         },
