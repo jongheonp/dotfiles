@@ -114,6 +114,10 @@ config.keys = {
   {
     key = '-', mods = 'CMD',
     action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' })
+  },
+  {
+    key = 'z', mods = 'CMD',
+    action = wezterm.action.TogglePaneZoomState
   }
 }
 
