@@ -8,14 +8,13 @@ config.font = wezterm.font_with_fallback({
 })
 
 -- NOTE: Has to be a better way...
-local subtext0 = '#a6adc8'
-local overlay0 = '#6c7086'
-local surface0 = '#313244'
+local subtext1 = '#bac2de' -- ANSI 0
+local surface2 = '#585b70' -- ANSI 8
 local base = '#1e1e2e'
 local crust = '#11111b'
 
 local catppuccin_mocha = wezterm.get_builtin_color_schemes()['Catppuccin Mocha']
-catppuccin_mocha.split = surface0
+catppuccin_mocha.split = crust
 config.color_schemes = {['Catppuccin Mocha'] = catppuccin_mocha}
 config.color_scheme = 'Catppuccin Mocha'
 
@@ -23,11 +22,11 @@ config.colors = {
   tab_bar = {
     active_tab = {
       bg_color = base,
-      fg_color = subtext0
+      fg_color = subtext1
     },
     inactive_tab = {
       bg_color = crust,
-      fg_color = overlay0
+      fg_color = surface2
     },
     inactive_tab_edge = crust
   }
