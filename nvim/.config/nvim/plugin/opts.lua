@@ -36,6 +36,8 @@ opt.relativenumber = true
 
 opt.shiftwidth = 2 -- Number of whitespace for (auto)indent
 
+opt.showmode = false
+
 opt.smartcase = true
 
 opt.softtabstop = -1 -- Use shiftwidth's value
