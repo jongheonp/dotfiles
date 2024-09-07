@@ -16,15 +16,9 @@ return {
           FzfLuaHeaderText = { fg = colors.surface2 },
           FzfLuaPathColNr = { fg = colors.text },
           FzfLuaPathLineNr = { fg = colors.text },
-          FzfLuaBufName = { fg = colors.blue }, -- For FzfLua lines
-          FzfLuaBufNr = { fg = colors.text },
-          FzfLuaBufFlagCur = { fg = colors.red },
-          FzfLuaBufFlagAlt = { fg = colors.green },
-          FzfLuaTabTitle = { fg = colors.text },
-          FzfLuaTabMarker = { fg = colors.red },
           FzfLuaLiveSym = { fg = colors.green },
           MiniStatuslineFilename = { bg = colors.base },
-          MiniStatuslineInactive = { fg = colors.surface1, bg = colors.base },
+          MiniStatuslineInactive = { fg = colors.surface2, bg = colors.base }
         }
       end
     },
