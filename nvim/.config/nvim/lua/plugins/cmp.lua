@@ -54,7 +54,7 @@ return {
           }),
           ['<C-u>'] = cmp.mapping.scroll_docs({ delta = 4 }),
           ['<C-d>'] = cmp.mapping.scroll_docs({ delta = -4 }),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
         }),
         snippet = {
           expand = function(args)
