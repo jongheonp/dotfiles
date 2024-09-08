@@ -8,6 +8,7 @@ return {
           backdrop = 100,
           preview = { layout = 'vertical' }
         },
+        fzf_colors = true,
         lsp = {
           symbols = {
             symbol_style = 2, -- Icons only
