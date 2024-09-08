@@ -28,7 +28,11 @@ config.colors = {
       bg_color = crust,
       fg_color = surface2
     },
-    inactive_tab_edge = crust
+    inactive_tab_edge = crust,
+    inactive_tab_hover = {
+      bg_color = base,
+      fg_color = subtext1
+    }
   }
 }
 
