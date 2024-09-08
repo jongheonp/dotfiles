@@ -1,6 +1,5 @@
 local opt = vim.opt
 
-opt.breakat = ' \t;,!?'
 opt.breakindent = true
 opt.breakindentopt = { 'shift:2', 'sbr' }
 
