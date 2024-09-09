@@ -28,7 +28,7 @@ zstyle ':completion:*' complete-options true
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_OPTS=" \
+export FZF_DEFAULT_OPTS="
 --info=inline-right \
 --color=\
 fg+:-1,\
@@ -53,5 +53,7 @@ RIPGREP_CONFIG_PATH=$HOME/.config/rg/ripgreprc
 if type rg &> /dev/null && [[ -f "$RIPGREP_CONFIG_PATH" ]]; then
   export RIPGREP_CONFIG_PATH
 fi
+
+[ -f ~/.wezterm.zsh ] && source ~/.wezterm.zsh
 
 source "$HOME/.aliases"
