@@ -1,5 +1,10 @@
 vim.g.zig_fmt_autosave = false -- TODO: Find a better way...
 
+-- Stop LSP on diff
+vim.api.nvim_create_autocmd({ 'DiffUpdated', 'FilterWritePre' }, {
+  command = 'LspStop'
+})
+
 vim.diagnostic.config({
   underline = true,
   virtual_text = false,
@@ -70,7 +75,15 @@ return {
         end
       })
 
-      lspconfig = require('lspconfig')
+      local lspconfig = require('lspconfig')
+
+      -- Don't autostart on vimdiff
+      lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup,
+        function(config)
+          if vim.api.nvim_get_option_value('diff', {}) then
+            config.autostart = false
+          end
+        end)
 
       lspconfig.clangd.setup({ capabilities = client_capabilities() })
 
