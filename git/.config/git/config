@@ -4,7 +4,7 @@
 [core]
 	editor = nvim
 [alias]
-        addi = add -p .
+        addp = add -p .
         dt = difftool
         tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
         stat = status --short
