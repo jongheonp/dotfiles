@@ -38,11 +38,11 @@ hl+:green,\
 info:-1,\
 border:-1,\
 separator:-1,\
-prompt:16,\
-pointer:16,\
-marker:16,\
-spinner:17,\
-header:gray"
+prompt:-1,\
+pointer:-1,\
+marker:-1,\
+spinner:-1,\
+header:-1"
 
 if type nvim &> /dev/null; then
   export EDITOR=nvim
