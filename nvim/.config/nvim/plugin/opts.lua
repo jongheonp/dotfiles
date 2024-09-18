@@ -8,7 +8,6 @@ opt.clipboard = 'unnamedplus' -- TODO: OSC52
 opt.completeopt = {'menu', 'menuone', 'noselect' }
 
 opt.cursorline = true
-opt.cursorlineopt = 'number'
 
 opt.expandtab = true -- Insert spaces instead of tabs
 
