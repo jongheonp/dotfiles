@@ -8,6 +8,7 @@ return {
           backdrop = 100,
         },
         lsp = {
+	  multiline = 1,
           symbols = {
             symbol_style = 2, -- Icons only
             symbol_icons = require('icons').symbol_kinds,
@@ -34,23 +35,23 @@ return {
     cmd = { 'Fzf', 'FzfLua' },
     keys = {
       {
+	"<Leader>fb",
+	"<Cmd>FzfLua buffers<CR>",
+	desc = "Search open buffers"
+      },
+      {
         "<Leader>ff",
         "<Cmd>FzfLua files resume=true<CR>",
-        desc = "Fild files on the current directory"
+        desc = "Find files on the current directory"
       },
       {
         "<Leader>fg",
-        "<Cmd>FzfLua live_grep<CR>",
+        "<Cmd>FzfLua live_grep multiline=1<CR>",
         desc = "Search current project lines"
       },
       {
-        "<Leader>fc",
-        "<Cmd>lua require('fzf-lua').lgrep_curbuf({ previewer = 'false' })<CR>",
-        desc = "Search current buffer lines"
-      },
-      {
         "<Leader>fg",
-        "<Cmd>FzfLua grep_visual<CR>",
+        "<Cmd>FzfLua grep_visual multiline=1<CR>",
         mode = 'x',
         desc = "Search current project lines"
       },
