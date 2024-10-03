@@ -8,6 +8,7 @@ return {
           backdrop = 100,
         },
         lsp = {
+          formatter = 'path.filename_first',
 	  multiline = 1,
           symbols = {
             symbol_style = 2, -- Icons only
@@ -15,6 +16,9 @@ return {
             symbol_fmt = function(s) return s end,
           }
         },
+	diagnostics = {
+          formatter = 'path.filename_first'
+	},
         files = {
           formatter = 'path.filename_first',
           actions = { ['ctrl-h'] = { actions.toggle_hidden } }
@@ -24,6 +28,9 @@ return {
           rg_opts = '--column --line-number --no-heading --color=always --colors=path:none --colors=line:none --colors=column:none --colors=match:fg:green --smart-case --max-columns=4096 -e',
           actions = { ['ctrl-h'] = { actions.toggle_hidden } }
         },
+	buffers = {
+          formatter = 'path.filename_first',
+	},
         defaults = {
           cwd_prompt = false,
           file_icons = false,
