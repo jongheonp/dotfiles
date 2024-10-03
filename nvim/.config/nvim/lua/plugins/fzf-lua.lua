@@ -6,7 +6,6 @@ return {
       return {
         winopts = {
           backdrop = 100,
-          preview = { layout = 'vertical' }
         },
         lsp = {
           symbols = {
@@ -16,11 +15,11 @@ return {
           }
         },
         files = {
-          winopts = { preview = { layout = 'flex' } },
           formatter = 'path.filename_first',
           actions = { ['ctrl-h'] = { actions.toggle_hidden } }
         },
         grep = {
+          winopts = { preview = { layout = 'vertical' } },
           rg_opts = '--column --line-number --no-heading --color=always --colors=path:none --colors=line:none --colors=column:none --colors=match:fg:green --smart-case --max-columns=4096 -e',
           actions = { ['ctrl-h'] = { actions.toggle_hidden } }
         },
