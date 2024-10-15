@@ -21,8 +21,8 @@ return {
 	  FzfLuaBufFlagCur = { fg = colors.text },
 	  FzfLuaBufFlagAlt = { fg = colors.text },
           FzfLuaLiveSym = { fg = colors.green },
-          MiniStatuslineFilename = { bg = colors.base },
-          MiniStatuslineInactive = { fg = colors.surface2, bg = colors.base }
+          MiniStatuslineFilename = { link = 'StatusLine' },
+          MiniStatuslineInactive = { link = 'StatusLineNC' }
         }
       end
     },
